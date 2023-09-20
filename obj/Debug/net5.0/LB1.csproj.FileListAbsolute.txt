@@ -1,0 +1,16 @@
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.exe
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.deps.json
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.runtimeconfig.json
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.runtimeconfig.dev.json
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.dll
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\ref\LB1.dll
+C:\Projects\korovkin\LB1\bin\Debug\net5.0\LB1.pdb
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.csproj.AssemblyReference.cache
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.AssemblyInfoInputs.cache
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.AssemblyInfo.cs
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.csproj.CoreCompileInputs.cache
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.dll
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\ref\LB1.dll
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.pdb
+C:\Projects\korovkin\LB1\obj\Debug\net5.0\LB1.genruntimeconfig.cache
