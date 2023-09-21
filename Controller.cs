@@ -10,7 +10,7 @@ namespace LB1
    
     class Controller
     {
-        public static List<Pawn> list = new List<Pawn>();
+        public static  List<Pawn> list = new List<Pawn>();
          static   string filePath = "file.csv";
      public   static string PrintPawn(Pawn pawn)
         {

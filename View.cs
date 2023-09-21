@@ -24,7 +24,7 @@ namespace LB1
                         Console.Write("\nВведите индекс: ");
                         try
                         {
-                            int ind = Convert.ToInt32(Console.ReadLine())+1;
+                            int ind = Convert.ToInt32(Console.ReadLine())-1;
                            Console.WriteLine (Controller.PrintByIndex(ind));
                             
                         }
@@ -63,7 +63,7 @@ namespace LB1
                                 }
                             }
                             Controller.list.Add(new Pawn(name, surname, address, age, married));
-                            Console.WriteLine("\nДанные добавлены");
+                       
                         }
                         catch (Exception e)
                         {
@@ -74,7 +74,7 @@ namespace LB1
                         Console.Write("\nВведите индекс: ");
                         try
                         {
-                            int ind = Convert.ToInt32(Console.ReadLine())+1;
+                            int ind = Convert.ToInt32(Console.ReadLine())-1;
                             Console.WriteLine(Controller.DeleteByIndex(ind));
 
                         }
