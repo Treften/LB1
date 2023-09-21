@@ -106,10 +106,26 @@ namespace LB1
                             string address = Console.ReadLine();
                             Console.Write("\nВведите возраст: ");
                             int age = Convert.ToInt32(Console.ReadLine());
-                            Console.Write("\nВведите семейный статус: ");
-                            bool married = Convert.ToBoolean(Console.ReadLine());
+                            System.ConsoleKey markey = System.ConsoleKey.Spacebar;
+                            bool married=false;
+                            while (markey != ConsoleKey.Y && markey!= ConsoleKey.N)
+                            {
+
+
+                                Console.Write("\nВведите семейный статус Y-- женат N -- холост: ");
+                                 markey = Console.ReadKey().Key;
+                                
+                                if (markey == System.ConsoleKey.Y)
+                                {
+                                    married = true;
+                                }
+                                else if(markey == System.ConsoleKey.N)
+                                {
+                                    married = false;
+                                }
+                            }
                             list.Add(new Pawn(name, surname, address, age, married));
-                            Console.WriteLine("Данные добавлены");
+                            Console.WriteLine("\nДанные добавлены");
                         }
                         catch (Exception e)
                         {
@@ -124,6 +140,7 @@ namespace LB1
                             if (GetByIndex(list, ind) != null)
                             {
                                 list.RemoveAt(ind);
+                                Console.WriteLine("\nДанные удалены");
                             }
                             else
                             {
@@ -140,8 +157,13 @@ namespace LB1
                     case ConsoleKey.D5:
                         using (var writer = new StreamWriter(filePath))
                         {
-
+                            foreach (Pawn pawn in list)
+                            {
+                                writer.WriteLine(pawn.Name+","+ pawn.Surname + "," + pawn.Address + "," + pawn.Age + "," + pawn.married  );
+                            }
+                                
                         }
+                        Console.WriteLine("Данные сохранены");
                             break;
                 }
                 Console.WriteLine("\n1 -- Вывести все записи\n2 -- Вывести по индексу\n3 -- Добавить запись\n4 -- Удалить запись\n5 -- Сохранить данные");
