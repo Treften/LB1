@@ -8,6 +8,7 @@ namespace LB1
 {
   public  class Pawn
     {
+        public int Id { get; set; }
         private string name;
         public string Name
         {
@@ -85,7 +86,10 @@ namespace LB1
             }
         }
         public bool married;
-        
+        public Pawn()
+        {
+
+        }
         public Pawn(string newName, string newSurname,string newAddress,int newAge,bool isMarried)
         {
             Name = newName;

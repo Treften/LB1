@@ -5,14 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace LB1
 {
    
     class Controller
     {
-        public static  List<Pawn> list = new List<Pawn>();
-         static   string filePath = "file.csv";
-     public   static string PrintPawn(Pawn pawn)
+       
+        public   List<Pawn> list = new List<Pawn>();
+        string filePath = "file.csv";
+     
+     public   string PrintPawn(Pawn pawn)
         {
             string married = "";
             if (pawn.married)
@@ -23,87 +26,82 @@ namespace LB1
             {
                 married = "Холост";
             }
-          string s= "\n\n" + "Имя: " + pawn.Name + "\n"
+          string s= "\n\n"+"Id: " +pawn.Id + "\n" + "Имя: " + pawn.Name + "\n"
                 + "Фамилия: " + pawn.Surname + "\n"
                 + "Адрес: " + pawn.Address + "\n"
                 + "Возраст: " + pawn.Age + "\n"
                 + married;
             return s;
         }
-        public static string PrintAll()
+        public  string PrintAll()
         {
-            string s="";
-            foreach (Pawn pawn in list)
+            string s = "";
+            using (PawnContext db=new PawnContext())
             {
-             s+=   PrintPawn(pawn);
+                var Pawns = db.Pawns;
+                foreach(Pawn pawn in Pawns)
+                {
+                    s += PrintPawn(pawn);
+                }
             }
-            return s;
+            return s; 
         }
-        public static string PrintByIndex(int ind)
+        public  string PrintByIndex(int ind)
         {
-            if (GetByIndex(list, ind) != null)
+            if (GetByIndex( ind) != null)
             {
-               return PrintPawn(GetByIndex(list, ind));
+               return PrintPawn(GetByIndex( ind));
             }
             else
             {
                 return "Индекс не найден";
             }
         }
-        public static string DeleteByIndex(int ind)
+        public  string DeleteByIndex(int ind)
         {
-            if (GetByIndex(list, ind) != null)
+           // var v = GetByIndex(ind);
+            if ( ind>0)
             {
-                list.RemoveAt(ind);
+                using (PawnContext db = new PawnContext())
+                {
+                    var pawn = db.Pawns.Find(ind);
+                    if (pawn != null)
+                    {
+                        db.Pawns.Remove(pawn);
+                        db.SaveChanges();
+                    }
+                  
+                  
+                }
                 return ("\nДанные удалены");
             }
             else
             {
                 return "Индекс не найден";
             }
+
         }
-        public static void SaveFile()
+
+            public  Pawn GetByIndex( int index)
         {
-            using (var writer = new StreamWriter(filePath))
+            using (PawnContext db = new PawnContext())
             {
-                foreach (Pawn pawn in list)
+                var Pawns = db.Pawns;
+              
+                if ( index >= 0)
                 {
-                    writer.WriteLine(pawn.Name + "," + pawn.Surname + "," + pawn.Address + "," + pawn.Age + "," + pawn.married);
+                    return db.Pawns.Find(index);
                 }
 
-            }
-        }
-            public static Pawn GetByIndex(List<Pawn> list, int index)
-        {
-            if (index < list.Count && index > 0)
-            {
-                return list[index];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
-        public static void ReadFile()
-        {
-            using (var reader = new StreamReader(filePath))
-            {
-                while (!reader.EndOfStream)
+                else
                 {
-                    var line = reader.ReadLine();
-
-                    var values = line.Split(',');
-                    if (line.Length < 5)
-                    {
-                        Console.WriteLine("Недостаточно данных");
-                        Environment.Exit(0);
-                    }
-                    list.Add(new Pawn(values[0], values[1], values[2], Convert.ToInt32(values[3]), Convert.ToBoolean(values[4])));
-
+                    return null;
                 }
             }
         }
+
+
+       
+
     }
 }
